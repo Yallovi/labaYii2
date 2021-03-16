@@ -4,8 +4,23 @@ use yii\db\ActiveRecord;
 
 class requests extends ActiveRecord
 { 
-    public function getSearchResults($search){
-        $searchResults = Books::find()->where(['like', 'name', $search])->asArray()->all();
-        return $searchResults;
-    }
+
+    // public $name;
+    // public $email;
+    // public $age;
+    // public $date;
+    // public $kitchen;
+    // public $callback;
+    // public $text;
+
+    // public function rules()
+    // {
+    //     return [
+    //         [['name', 'email', 'age', 'date', 'kitchen', 'callback', 'text'], 'required', 'message' => 'Поле обязательно'],
+    //         ['email', 'email'],
+    //         ['name', 'string', 'length'=>[5,30]],
+    //         ['age', 'integer', 'min'=>18],
+    //         ['age', 'integer', 'max'=>100],
+    //     ];
+    // }
 }
