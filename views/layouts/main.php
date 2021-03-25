@@ -49,20 +49,22 @@ AppAsset::register($this);
                     ['label' => 'Информация', 'url' => ['/site/laboratory']],
                     ['label' => 'Лабораторная 1', 'url' => ['/site/lab1']],
                     ['label' => 'Лабораторная 2', 'url' => ['library/author']],
+                    ['label' => 'Лабораторная 3', 'url' => ['#']],
                 ]
             ],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-                )
+            //['label' => 'Админка', 'url' => ['/index.php/admin']],
+             Yii::$app->user->isGuest ? (
+                 ['label' => 'Админка', 'url' => ['/site/login']]
+             ) : (
+                 '<li>'
+                 . Html::beginForm(['/site/logout'], 'post')
+                 . Html::submitButton(
+                     'Выйти из (' . Yii::$app->user->identity->username . ')',
+                     ['class' => 'btn btn-link logout']
+                 )
+                 . Html::endForm()
+                 . '</li>'
+                 )
 
         ],
     ]);
