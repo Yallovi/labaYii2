@@ -49,7 +49,7 @@ AppAsset::register($this);
                     ['label' => 'Информация', 'url' => ['/site/laboratory']],
                     ['label' => 'Лабораторная 1', 'url' => ['/site/lab1']],
                     ['label' => 'Лабораторная 2', 'url' => ['library/author']],
-                    ['label' => 'Лабораторная 3', 'url' => ['#']],
+                    ['label' => 'Лабораторная 3', 'url' => ['site/lab3']],
                 ]
             ],
             //['label' => 'Админка', 'url' => ['/index.php/admin']],
@@ -64,7 +64,8 @@ AppAsset::register($this);
                  )
                  . Html::endForm()
                  . '</li>'
-                 )
+                 ),
+             ['label' => 'Регистрация', 'url' => ['/site/signup']],
 
         ],
     ]);

@@ -12,15 +12,15 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-      /////изменения
+
         return static::findOne($id);
     }
-    /////////////////
+
   public static function tableName(){
     return 'user';
   }
 
-///////////////
+
     /**
      * {@inheritdoc}
      */
@@ -74,6 +74,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return $this->password === $password;
     }
+
+    public function setPassword($password)
+    {
+        $this->password= Yii::$app->security->generatePasswordHash($password);
+    }
+
     public function generateAuthKey()
     {
         $this->auth_key =Yii::$app->security->generateRandomString();

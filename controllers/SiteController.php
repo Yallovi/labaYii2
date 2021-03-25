@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,6 +14,8 @@ use app\models\EntryForm;
 use yii\data\Pagination;
 use app\models\Author;
 use app\models\Books;
+use app\models\User;
+use app\models\SignupForm;
 
 class SiteController extends Controller
 {
@@ -66,6 +69,23 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -162,5 +182,9 @@ class SiteController extends Controller
 
         parent::init();
     }
-    
+    public function actionLab3()
+    {
+        return $this->render('lab3');
+    }
+
 }
